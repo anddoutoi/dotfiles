@@ -13,5 +13,6 @@ alias lla='ls -al'
 alias vm='vim'
 
 # scripts
-alias cssc='/Users/andersringqvist/Scripts/php/cssc/cssc.php'
-alias tweet='/Users/andersringqvist/Scripts/bash/tweet.bash'
+if [ -f ~/.bash_files/git-completion.bash ]; then
+	source ~/.bash_files/git-completion.bash
+fi
