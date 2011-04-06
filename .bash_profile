@@ -4,13 +4,13 @@ fi
 
 # commads
 alias c='clear'
+
 alias ll='ls -l'
 alias lls='ls -a'
 alias lsa='ls -a'
 alias lla='ls -al'
 
-# apps
-alias vm='vim'
+alias reload='. ~/.bash_profile'
 
 # scripts
 if [ -f ~/.bash_files/git-completion.bash ]; then
