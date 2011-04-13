@@ -69,6 +69,7 @@ set foldenable
 " Hide mouse when typing
 set mousehide
 
+set list
 
 " 'lcs' is short for 'listchars'
 " Ctrl+v, u, unicode hex code
