@@ -1,18 +1,14 @@
+# colors and stuff
 if [ -f ~/.bashrc ]; then
 	source ~/.bashrc
 fi
 
-# commads
-alias c='clear'
+# aliases
+if [ -f ~/.dotfiles/bash_files/aliases.bash ]; then
+	source ~/.dotfiles/bash_files/aliases.bash
+fi
 
-alias ll='ls -l'
-alias lls='ls -a'
-alias lsa='ls -a'
-alias lla='ls -al'
-
-alias reload='. ~/.bash_profile'
-
-# scripts
+# 3rd party scripts
 if [ -f ~/.bash_files/git-completion.bash ]; then
 	source ~/.bash_files/git-completion.bash
 fi
