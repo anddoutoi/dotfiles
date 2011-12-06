@@ -1,12 +1,11 @@
 # commads
 alias c='clear'
 
-alias ll='ls -l'
-alias lls='ls -a'
-alias lsa='ls -a'
-alias lla='ls -al'
-alias lsh='ls -d .*'  # list hidden
-alias llh='ls -dl .*' # list hidden
+alias lh='ls -d .*'   # list hidden
+alias la='ls -a'      # list all
+alias ll='ls -l'      # long format
+alias llh='ls -ld .*'
+alias lla='ls -la'
 
 alias reload='. ~/.bash_profile'
 
