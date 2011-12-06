@@ -12,3 +12,7 @@ fi
 if [ -f ~/.bash_files/git-completion.bash ]; then
 	source ~/.bash_files/git-completion.bash
 fi
+
+if [ -f ~/.bash_files/npm-completion.bash ]; then
+	source ~/.bash_files/npm-completion.bash
+fi
