@@ -1,0 +1,5 @@
+# Apple Mac files
+.DS_Store
+
+# Vim backup files
+*.swp
