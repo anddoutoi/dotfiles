@@ -1,3 +1,6 @@
+" A vimrc
+
+
 
 " set nocompatible
 " How was it now, we need this or not? RTFMing says
@@ -11,18 +14,25 @@
 
 
 
-set bg=dark
-" background
-" Setting this option does not change the background
-" color, it tells Vim what the background color looks
-" like.
-"   When set to "dark", Vim will try to use colors that
-" look good on a dark background.  When set to "light",
-" Vim will try to use colors that look good on a light
-" background.  Any other value is illegal.
-"   Vim tries to set the default value according to the
-" terminal used.
-" This will not always be correct.
+" set exrc
+" - boolean (default off)
+" If the 'exrc' option is on the current directory is
+" searched for three files. The first that exists is
+" used, the others are ignored.
+" -  The file ".vimrc" (for Unix, Amiga and OS/2) (*)
+"             "_vimrc" (for MS-DOS and Win32)     (*)
+" -  The file "_vimrc" (for Unix, Amiga and OS/2) (*)
+"             ".vimrc" (for MS-DOS and Win32)     (*)
+" -  The file ".exrc"  (for Unix, Amiga and OS/2)
+"             "_exrc"  (for MS-DOS and Win32)
+"
+" (*) Using this file or environment variable will cause
+" 'compatible' to be off by default.
+"
+" In other words: support for "local" vim settings.
+
+
+
 
 set nu
 " number
@@ -37,6 +47,7 @@ set nuw=3
 
 set ru
 " ruler
+" - boolean (default off), global
 " Show the line and column number of the cursor
 " position, separated by a comma.
 
@@ -69,8 +80,21 @@ set acd
 
 
 
-syntax enable
+"syntax enable
 "syntax on
+
+set bg=dark
+" background
+" Setting this option does not change the background
+" color, it tells Vim what the background color looks
+" like.
+"   When set to "dark", Vim will try to use colors that
+" look good on a dark background.  When set to "light",
+" Vim will try to use colors that look good on a light
+" background.  Any other value is illegal.
+"   Vim tries to set the default value according to the
+" terminal used.
+" This will not always be correct.
 
 set sm
 " showmatch
@@ -96,7 +120,7 @@ set lcs=tab:⇥\ ,trail:●,eol:↵
 " 2192 → (rightwards arrow, &rarr;)
 " 21D2 ⇒ (rightwards double arrow, &rArr;)
 " 25B8 ▸ (TextMate style)
-" 
+"
 " trail chars
 " 25CF ●
 " 2639 ☹ (frowning face)
@@ -159,9 +183,6 @@ set sw=4
 
 
 
-
-
-
 set so=5
 " scrolloff
 " Minimal number of screen lines to keep above and below
@@ -174,33 +195,23 @@ set so=5
 
 
 
-set mouse=a
-" Enable the use of the mouse.  Only works for certain
-" terminals (xterm, MS-DOS, Win32 |win32-mouse|, QNX
-" pterm, *BSD console with sysmouse and Linux console
-" with gpm).
-
-set mh
-" mousehide
-" When on (default), the mouse pointer is hidden when
-" characters are typed. The mouse pointer is restored
-" when the mouse is moved.
-
-
-
 
 
 set ai
 " autoindent
+" boolean (default off), local to buffer
 " Copy indent from current line when starting a new
 " line (typing <CR> in Insert mode or when using the
 " "o" or "O" command).
 
 set si
 " smartindent
-" Do smart autoindenting when starting a new line.
-" Works for C-like programs, but can also be used
-" for other languages.
+" - boolean (default off), local to buffer
+" Do smart autoindenting when starting a new line. Works
+" for C-like programs, but can also be used for other
+" languages.
+" Not available when compiled without the |+smartindent|
+" feature.
 
 " The first setting tells vim to use "autoindent" (that is,
 " use the current line's indent level to set the indent level
@@ -224,23 +235,43 @@ set bs=2
 " When the value is empty, Vi compatible backspacing is used.
 "
 " For backwards compatibility with version 5.4 and earlier:
-"   value   effect                          
-"     0     same as ":set backspace=" (Vi compatible) 
+"   value   effect
+"     0     same as ":set backspace=" (Vi compatible)
 "     1     same as ":set backspace=indent,eol"
 "     2     same as ":set backspace=indent,eol,start"
-"
 
 
 
 
-if has ('autocmd')
-	autocmd FileType html setlocal ts=2 sts=2 sw=2 et
-	autocmd FileType css setlocal ts=2 sts=2 sw=2 et
+
+if has('mouse')
+	set mouse=a
+	" Enable the use of the mouse.  Only works for certain
+	" terminals (xterm, MS-DOS, Win32 |win32-mouse|, QNX
+	" pterm, *BSD console with sysmouse and Linux console
+	" with gpm).
+
+	set mh
+	" mousehide
+	" When on (default), the mouse pointer is hidden when
+	" characters are typed. The mouse pointer is restored
+	" when the mouse is moved.
+endif " has('mouse')
+
+
+
+if has('autocmd')
+	autocmd FileType html       setlocal ts=2 sts=2 sw=2 et
+	autocmd FileType css        setlocal ts=2 sts=2 sw=2 et
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 
-	autocmd bufwritepost vimrc source $MYVIMRC
-endif
-" Should resource your vimrc file upon :w
+	" autocmd BufWritePost vimrc source $MYVIMRC
+	" Should re-source your vimrc file upon :w
+endif " has('autocmd')
+
+
+
+
 
 let mapleader = ','
 nmap <leader>v :tabedit $MYVIMRC<CR>
@@ -250,3 +281,13 @@ nmap <leader>l :set list!<CR>
 " Toggle between list and nolist.
 
 
+
+
+
+" Delete blank lines
+" :g/^$/d
+
+" Trim trailing spaces on current line
+" :s/\s\+$//e
+
+nmap <leader><BS> :s/\s\+$//e<CR>
