@@ -80,8 +80,34 @@ set acd
 
 
 
+" Syntax highlighting is not available when the |+syntax|
+" feature has been disabled at compile time.
+
 "syntax enable
-"syntax on
+" This command switches on syntax highlighting.
+
+syntax on
+" If you want Vim to overrule your settings with the defaults.
+
+
+
+
+
+"filetype on
+" Vim can detect the type of file that is edited.  This is done by checking
+" the file name and sometimes by inspecting the contents of the file for
+" specific text. Each time a new or existing file is edited, Vim will try to
+" recognize the type of the file and set the 'filetype' option.
+"
+" The file types are also used for syntax highlighting.  If the ":syntax on"
+" command is used, the file type detection is installed too.  There is no need
+" to do ":filetype on" after ":syntax on".
+
+
+
+
+
+
 
 set bg=dark
 " background
@@ -159,7 +185,7 @@ set sts=4
 " mix of spaces and <Tab>s is used.  This is useful to keep
 " the 'ts' setting at its standard value of 8, while being
 " able to edit like it is set to 'sts'.
-" When 'sts' is zero, this feature is off. 
+" When 'sts' is zero, this feature is off.
 " When 'expandtab' is not set, the number of spaces is
 " minimized by using <Tab>s.
 " NOTE: This option is set to 0 when 'compatible' is set.
@@ -265,7 +291,7 @@ if has('autocmd')
 	autocmd FileType css        setlocal ts=2 sts=2 sw=2 et
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 
-	" autocmd BufWritePost vimrc source $MYVIMRC
+	autocmd BufWritePost vimrc source $MYVIMRC
 	" Should re-source your vimrc file upon :w
 endif " has('autocmd')
 
