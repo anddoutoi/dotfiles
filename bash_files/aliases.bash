@@ -1,4 +1,3 @@
-# commads
 alias reload='. ~/.bash_profile'
 
 alias c='clear'
@@ -11,7 +10,3 @@ alias lla='ls -la'
 
 alias lines='wc -l'   # count lines
 alias words='wc -w'   # count words
-
-# apps
-
-# tools
