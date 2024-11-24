@@ -1,0 +1,15 @@
+[core]
+	excludesFile = ~/.gitignore
+
+[init]
+	defaultBranch = main
+
+[user]
+	useConfigOnly = true
+	name = Anders Ringqvist
+
+[include]
+	path = ~/.gitconfig-alias
+
+[includeIf "gitdir:~/path/to/repositories/"]
+	path = ~/.gitconfig-override
